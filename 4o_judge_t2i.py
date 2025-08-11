@@ -89,6 +89,9 @@ if __name__ == '__main__':
                          """)
     ckpt_name = "test_train_s3"
     epoch2load = 20
+    
+    # !! If only one concept is to be tested, the concept can be directly specified, 
+    # !! concept_list_file = None, concepts = ["concept_name"].
     concept_list_file = "path/to/uni_c_tokens_data/concepts_list.json"
     with open(concept_list_file, 'r') as f:
         concepts = json.load(f)

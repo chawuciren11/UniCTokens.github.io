@@ -7,7 +7,7 @@
 
 <div align="center">
 
-[Ruichuan An](https://github.com/arctanxarc), [Sihan Yang]()<sup>*</sup>, [Renrui Zhang]()<sup>†</sup>, [Zijun Shen](), [Ming Lu](), [Gaole Dai]() <br> [Hao Liang](), [Ziyu Guo](), [Shilin Yan](), [Yulin Luo](),
+[Ruichuan An](https://github.com/arctanxarc), [Sihan Yang](https://github.com/Hhankyangg)<sup>*</sup>, [Renrui Zhang]()<sup>†</sup>, [Zijun Shen](), [Ming Lu](), [Gaole Dai]() <br> [Hao Liang](), [Ziyu Guo](), [Shilin Yan](), [Yulin Luo](),
 [Bocheng Zou](), [Chaoqun Yang](), [Wentao Zhang]()<sup>‡</sup>
 
 <sup>*</sup> Equal Contribution &nbsp;&nbsp;&nbsp; <sup>†</sup> Project Leader &nbsp;&nbsp;&nbsp; <sup>‡</sup> Corresponding Author
@@ -16,9 +16,10 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2505.14671"><b>📄 Paper</b></a> |
-  <a href="https://drive.google.com/file/d/1R933C8ko0p41HJks_5B6me41eS1WR3aE/view?usp=sharing"><b>📦 Dataset</b></a> |
+  <a href="#-unictokens-dataset"><b>📦 Dataset</b></a> |
   <a href="#-quick-start-for-dataset"><b>🚀 Quick Start</b></a> |
-  <a href="#%EF%B8%8F-training-a-concept"><b>⚙️ Training</b></a> <br>
+  <a href="#️-training-a-concept"><b>⚙️ Training</b></a> <br>
+  <a href="#-Evaluation"><b>📊 Evaluation</b></a> |
   <a href="#-license"><b>📜 License</b></a> |
   <a href="#-citation"><b>📝 Citation</b></a> |
   <a href="#-contact"><b>📬 Contact</b></a>
@@ -106,7 +107,7 @@ UniCTokens/
 └── README.md
 ```
 
-## 🚀 Quick Start For Dataset
+### 🚀 Quick Start For Dataset
 
 1. **Set the dataset root**
    Open `gen_showo_training_data.py` and `gen_test_data.py`, change
@@ -135,7 +136,7 @@ First, install dependencies:
 pip install -r requirements.txt
 ```
 
-Three-stage training framework:
+Our training is conducted per concept, and we provide a Three-Stage Training Framework script that allows training for any given concept:
 
 ```shell  
 concept="bo"  
@@ -155,7 +156,43 @@ python train_p_stage_3.py --concept "${concept}" --data_root <path/to/uni_c_toke
 
 ## 📊 Evaluation
 
-Coming soon...
+Our evaluation procedure follows the same concept-based setup as training, where each concept is evaluated individually. We provide scripts to evaluate any given concept across various metrics:
+
+1. **Personalized Understanding** Evaluation Script
+
+First, set your DeepSeek API key in `eval_p_mmu.py`:
+
+```python
+CLIENT = init_deepseek("your api key")
+```
+
+Then run the evaluation:
+
+```shell
+python eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20
+```
+
+2. **Personalized Generation - Pure Generation** Evaluation Script
+
+
+For Pure Generation, we use the test prompts from the DreamBooth dataset to compute CLIP-I and CLIP-T scores. First, generate the images to be evaluated:
+
+```shell
+python gen_p_images_for_gen_eval.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
+```
+
+After generating the images, modify the parameters as needed in `clip_eval.py` and run `clip_eval.py` to complete the evaluation.
+
+3. **Personalized Generation — People Generation & Knowledge-driven Generation** Evaluation Scripts
+
+For People Generation and Knowledge-driven Generation, first generate the images to be evaluated:
+
+```shell
+python gen_p_images_for_mmu_t2i.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
+```
+
+- **People Generation**: Modify the parameters in `face_eval_v2.py`, then run `face_eval_v2.py` to evaluate face generation.
+- **Knowledge-driven Generation**: First set your GPT API key in `api.py`, then modify the parameters in `4o_judge_t2i.py` and run it to complete the evaluation.
 
 ## 📜 License
 

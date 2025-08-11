@@ -178,11 +178,13 @@ class SHOWO_P_CLIPEvaluator(CLIPEvaluator):
         
 
 if __name__ == '__main__':
-    work_dir = "./"
-    
-    model = SHOWO_P_CLIPEvaluator("cuda:7", work_dir=work_dir, save_dir="gen_saved")
+
+    model = SHOWO_P_CLIPEvaluator("cuda", work_dir="./", save_dir="gen_saved")
     ckpt_name = "test_train_s3"
-    epoch2load = 0
+    epoch2load = 20
+    
+    # !! If only one concept is to be tested, the concept can be directly specified, 
+    # !! concept_list_file = None, concepts = ["concept_name"].
     concept_list_file = "path/to/uni_c_tokens_data/concepts_list.json"
     with open(concept_list_file, 'r') as f:
         concepts = json.load(f)
