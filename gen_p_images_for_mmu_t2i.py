@@ -27,7 +27,7 @@ def get_test_args():
     parser.add_argument("--epoch_to_load", type=int, default=15)
     parser.add_argument("--nums_new_token_i_stage_1", type=int, default=16)
     parser.add_argument("--nums_new_token_i_stage_2", type=int, default=8)
-    parser.add_argument("--nums_new_token_i_stage_3", type=int, default=0)
+    parser.add_argument("--nums_new_token_i_stage_3", type=int, default=8)
     parser.add_argument("--num_gen_images", type=int, default=100)
     parser.add_argument("--output_dir", type=str, default="t2i_saved")
     

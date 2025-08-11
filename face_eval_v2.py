@@ -141,10 +141,13 @@ class SHOWO_P_FACEEvaluator(FACEEvaluator):
         
         
 if __name__ == '__main__':
-    model = SHOWO_P_FACEEvaluator(device='cuda:6', work_dir='./')
+    model = SHOWO_P_FACEEvaluator(device='cuda', work_dir='./')
     ckpt_name = "test_train_s3"
-    epoch2load = 0
-    concept_list_file = "/home/hpyky/show_data/concepts_list.json"
+    epoch2load = 20
+    
+    # !! If only one concept is to be tested, the concept can be directly specified, 
+    # !! concept_list_file = None, concepts = ["concept_name"].
+    concept_list_file = "path/to/uni_c_tokens_data/concepts_list.json"
     with open(concept_list_file, 'r') as f:
         concepts = json.load(f)
     sims = []
@@ -153,7 +156,7 @@ if __name__ == '__main__':
         # sims.append(sim)
         # print(f"Concept: {concept}, Similarity: {sim}")
         model.evaluate_concept(concept, ckpt_name, epoch2load)
-    model.save_results(f"5_8_face_eval_results_{ckpt_name}_{epoch2load}.json")
+    model.save_results(f"face_eval_results_{ckpt_name}_{epoch2load}.json")
     model.print_avg_results()
 
 
