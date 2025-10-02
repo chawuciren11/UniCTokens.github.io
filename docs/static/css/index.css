@@ -617,7 +617,30 @@ code {
   flex-shrink: 0;
 }
 
+/* 在现有CSS中添加以下样式 */
 
+/* 标题与图片容器 */
+.publication-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 居中对齐 */
+  gap: 0.5rem; /* 标题与图片间距 */
+}
+
+/* 标题前的图片样式 */
+.title-icon {
+  height: 1em; /* 与文字大小保持一致 */
+  width: auto; /* 自动维持宽高比 */
+  vertical-align: middle; /* 垂直居中对齐文字 */
+}
+
+/* 响应式调整（可选） */
+@media (max-width: 768px) {
+  .publication-title-container {
+    flex-direction: column; /* 小屏幕下图片在上标题在下 */
+    gap: 0.25rem;
+  }
+}
 /* Mobile Responsive Improvements */
 @media screen and (max-width: 768px) {
   .hero-body {
