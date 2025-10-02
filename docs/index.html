@@ -286,7 +286,7 @@
 <!-- UnifyBench Benchmark Tasks Section -->
 <section class="section">
   <div class="container is-max-desktop has-text-centered mb-8">
-    <h2 class="title is-3">📊 UnifyBench Benchmark Tasks</h2>
+    <h2 class="title is-3">📅 UnifyBench Benchmark Tasks</h2>
     
     <h3 class="title is-4">Multi-Modal Understanding (MMU)</h3>
     <div class="table-container">
@@ -338,6 +338,50 @@
             <td>Personalized knowledge-driven</td>
             <td>t2i_conditions.json</td>
             <td>Combined T2I-Score: must satisfy both visual & textual attributes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Dataset Section -->
+<section class="section hero is-light py-10">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 mb-6 has-text-centered">📦 UniCTokens Dataset</h2>
+    
+    <!-- Download Link -->
+    <div class="has-text-centered mb-8">
+      <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+        <span class="icon">
+          <i class="fas fa-download"></i>
+        </span>
+        <span>Download the dataset here</span>
+      </a>
+    </div>
+    
+    <!-- Data Overview -->
+    <h3 class="title is-4 mb-4">Data Overview</h3>
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total concepts</td>
+            <td>20 (Human × 10 · Animal × 5 · Object × 5)</td>
+          </tr>
+          <tr>
+            <td>Images per concept</td>
+            <td>N ≈ 10 – 15 (already split into train / test)</td>
+          </tr>
+          <tr>
+            <td>Negative samples</td>
+            <td>random_images/ (100 random irrelevant images) + negative_example/ (hard negatives)</td>
           </tr>
         </tbody>
       </table>
