@@ -201,8 +201,24 @@ body {
 }
 
 .author-block {
-  display: inline-block;
-  margin-right: 0.5rem;
+  display: inline-flex; /* 确保内部元素对齐更灵活 */
+  align-items: center; /* 垂直居中作者名和上标 */
+  margin-right: 1rem; /* 增加作者间水平间距，避免拥挤 */
+  margin-bottom: 0.5rem; /* 允许换行时保留垂直间距 */
+}
+
+/* 补充作者名后的逗号样式（避免手动添加逗号的排版问题） */
+.author-block:not(:last-child)::after {
+  content: ",";
+  margin-left: 0.3rem; /* 逗号与作者名保持适当距离 */
+  color: var(--text-primary); /* 与文字同色 */
+}
+
+/* 调整上标（*†‡）的位置和大小，避免影响整体排版 */
+.author-block sup {
+  margin-left: 0.2rem; /* 上标与名字拉开距离 */
+  font-size: 0.75rem; /* 缩小上标字体 */
+  line-height: 1; /* 避免上标影响行高 */
 }
 
 .publication-banner img {
