@@ -191,11 +191,13 @@
             Personalized models have demonstrated remarkable success in understanding and generating concepts provided by users. However, existing methods use separate concept tokens for understanding and generation, treating these tasks in isolation. This may result in limitations for generating images with complex prompts. For example, given the concept \langle bo\rangle, generating "\langle bo\rangle wearing its hat" without additional textual descriptions of its hat. We call this kind of generation personalized knowledge-driven generation. To address the limitation, we present UniCTokens, a novel framework that effectively integrates personalized information into a unified vision language model (VLM) for understanding and generation. UniCTokens trains a set of unified concept tokens to leverage complementary semantics, boosting two personalized tasks. Moreover, we propose a progressive training strategy with three stages: understanding warm-up, bootstrapping generation from understanding, and deepening understanding from generation to enhance mutual benefits between both tasks. To quantitatively evaluate the unified VLM personalization, we present UnifyBench, the first benchmark for assessing concept understanding, concept generation, and knowledge-driven generation. Experimental results on UnifyBench indicate that UniCTokens shows competitive performance compared to leading methods in concept understanding, concept generation, and achieving state-of-the-art results in personalized knowledge-driven generation. Our research demonstrates that enhanced understanding improves generation, and the generation process can yield valuable insights into understanding.
           </p>
         </div>
-        <div class="columns is-centered has-text-centered">
-            <div class="publication-video">
-              <!-- TODO: Replace with your YouTube video ID -->
-              <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
+        <div class="item">
+          <!-- TODO: Replace with your research result images -->
+          <img src="static/images/showcase.jpg" alt="The capability overview of UniCTokens" loading="lazy"/>
+          <!-- TODO: Replace with description of this result -->
+          <h2 class="subtitle has-text-centered">
+            The capability overview of UniCTokens.
+          </h2>
         </div>
       </div>
     </div>
