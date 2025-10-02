@@ -1,7 +1,14 @@
+<!-- <div align="center">
+<h1>
+✨ UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens ✨
+</h1>
+</div> -->
 <div align="center">
 <h1>
 ✨ UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens ✨
 </h1>
+
+<h3>—————— NeurIPS 2025 ——————</h3>
 </div>
 
 
