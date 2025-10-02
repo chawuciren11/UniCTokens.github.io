@@ -69,8 +69,14 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens</h1>
+            <!-- 标题前添加PDF图标 -->
+            <h1 class="title is-1 publication-title">
+              <span class="icon mr-2">
+                <i class="static/pdfs/icon.pdf"></i>
+              </span>
+              UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens
+            </h1>
+          </div>
             <!-- 修正后的作者列表结构 -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -79,17 +85,39 @@
               <span class="author-block">
                 <a href="https://github.com/Hhankyangg" target="_blank">Sihan Yang</a><sup>*</sup>
               </span>
-              <span class="author-block">Renrui Zhang<sup>†</sup></span>
-              <span class="author-block">Zijun Shen</span>
-              <span class="author-block">Ming Lu</span>
-              <span class="author-block">Gaole Dai</span>
-              <span class="author-block">Hao Liang</span>
-              <span class="author-block">Ziyu Guo</span>
-              <span class="author-block">Shilin Yan</span>
-              <span class="author-block">Yulin Luo</span>
-              <span class="author-block">Bocheng Zou</span>
-              <span class="author-block">Chaoqun Yang</span>
-              <span class="author-block">Wentao Zhang<sup>‡</sup></span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Renrui Zhang</a><sup>†</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/chawuciren11" target="_blank">Zijun Shen</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Ming Lu</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Gaole Dai</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Hao Liang</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Ziyu Guo</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Shilin Yan</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Yulin Luo</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Bocheng Zou</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Chaoqun Yang</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Wentao Zhang</a><sup>‡</sup>
+              </span>
             </div>
 
                   <div class="is-size-5 publication-authors">
@@ -155,23 +183,7 @@
 </section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
+
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -182,7 +194,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Personalized models have demonstrated remarkable success in understanding and generating concepts provided by users. However, existing methods use separate concept tokens for understanding and generation, treating these tasks in isolation. This may result in limitations for generating images with complex prompts. For example, given the concept \langle bo\rangle, generating "\langle bo\rangle wearing its hat" without additional textual descriptions of its hat. We call this kind of generation personalized knowledge-driven generation. To address the limitation, we present UniCTokens, a novel framework that effectively integrates personalized information into a unified vision language model (VLM) for understanding and generation. UniCTokens trains a set of unified concept tokens to leverage complementary semantics, boosting two personalized tasks. Moreover, we propose a progressive training strategy with three stages: understanding warm-up, bootstrapping generation from understanding, and deepening understanding from generation to enhance mutual benefits between both tasks. To quantitatively evaluate the unified VLM personalization, we present UnifyBench, the first benchmark for assessing concept understanding, concept generation, and knowledge-driven generation. Experimental results on UnifyBench indicate that UniCTokens shows competitive performance compared to leading methods in concept understanding, concept generation, and achieving state-of-the-art results in personalized knowledge-driven generation. Our research demonstrates that enhanced understanding improves generation, and the generation process can yield valuable insights into understanding.
           </p>
         </div>
       </div>
