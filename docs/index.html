@@ -204,7 +204,125 @@
   </div>
 </section>
 <!-- End paper abstract -->
+<!-- Introduction Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Introduction</h2>
+    <div class="content has-text-justified">
+      <p>
+        UniCTokens is an innovative framework that effectively integrates personalized information into a unified vision language model (VLM) for understanding and generation tasks. Existing methods typically treat understanding and generation tasks separately, which limits the model's ability to generate images with complex prompts. For example, given the concept ⟨bo⟩, generating "&lang;bo&rang; wearing its hat" without additional descriptions of what the hat looks like. We call this personalized knowledge-driven generation.
+      </p>
+      <p>
+        UniCTokens addresses this limitation through a three-stage progressive training strategy:
+      </p>
+      <ul>
+        <li>Understanding warm-up.</li>
+        <li>Bootstrapping generation from understanding.</li>
+        <li>Deepening understanding from generation (Generation as Perception).</li>
+      </ul>
+      <p>
+        Our research demonstrates that enhanced understanding improves generation, and the generation process can yield valuable insights into understanding.
+      </p>
+    </div>
+  </div>
+</section>
 
+<!-- Key Features Section -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Key Features</h2>
+    <div class="content has-text-justified">
+      <div class="columns is-multiline">
+        <div class="column is-half">
+          <div class="box">
+            <h3 class="title is-4">🔄 Unified Concept Tokens</h3>
+            <p>Unifying personalized understanding and generation tasks in a single model.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box">
+            <h3 class="title is-4">🧠 Personalized Knowledge-Driven Generation</h3>
+            <p>Leveraging external personalized knowledge for complex image generation.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box">
+            <h3 class="title is-4">📈 Mutual Enhancement</h3>
+            <p>Three-stage strategy promoting mutual enhancement of understanding and generation, achieving cross-task information transfer.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box">
+            <h3 class="title is-4">📊 UnifyBench</h3>
+            <p>The first benchmark for assessing personalized understanding, generation, and personalized knowledge-driven generation all in one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UnifyBench Benchmark Tasks Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">📊 UnifyBench Benchmark Tasks</h2>
+    
+    <h3 class="title is-4">Multi-Modal Understanding (MMU)</h3>
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Sub-task</th>
+            <th>Source files</th>
+            <th>Evaluation focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Text-Only QA</td>
+            <td>test/&lt;concept&gt;/text_only.json</td>
+            <td>Check whether the model remembers concept knowledge (no image)</td>
+          </tr>
+          <tr>
+            <td>VQA</td>
+            <td>test/&lt;concept&gt;/vqa.json + image</td>
+            <td>Visual question answering about the concept image</td>
+          </tr>
+          <tr>
+            <td>Rec</td>
+            <td>test/*.png</td>
+            <td>Pure visual recognition capability</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="title is-4 mt-6">Text-to-Image Generation (T2I)</h3>
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>Input</th>
+            <th>Metrics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vanilla generation</td>
+            <td>Prompts from the DreamBooth Dataset → target-concept images</td>
+            <td>CLIP-I / CLIP-T · ArcFace similarity</td>
+          </tr>
+          <tr>
+            <td>Personalized knowledge-driven</td>
+            <td>t2i_conditions.json</td>
+            <td>Combined T2I-Score: must satisfy both visual & textual attributes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <!-- Image carousel -->
 <!-- 示例：在轮播中展示PDF（替代图片/视频） -->
