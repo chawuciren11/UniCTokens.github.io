@@ -453,25 +453,58 @@
 
 
 <!-- Citation Section -->
-  <section class="section hero is-light py-10" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title is-3 mb-6 has-text-centered">📝 BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code" class="p-4 bg-gray-50 rounded-lg border border-gray-200 overflow-x-auto text-sm">
-        <code>@article{an2025unictokens,
-          title={UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens},
-          author={An, Ruichuan and Yang, Sihan and Zhang, Renrui and Shen, Zijun and Lu, Ming and Dai, Gaole and Liang, Hao and Guo, Ziyu and Yan, Shilin and Luo, Yulin and others},
-          journal={arXiv preprint arXiv:2505.14671},
-          year={2025}
-        }</code>
-        </pre>
+<section class="section hero is-light py-10" id="BibTeX">
+  <div class="container is-max-desktop"> <!-- 移除默认左对齐的content类 -->
+    <!-- 标题+按钮容器：使用flex确保整体居中 -->
+    <div class="bibtex-header mb-6" style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <h2 class="title is-3 has-text-centered mb-0">📝 BibTeX</h2> <!-- 移除多余的mb-6，避免间距异常 -->
+      <button class="copy-bibtex-btn button is-small is-dark" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+        <i class="fas fa-copy mr-1"></i>
+        <span class="copy-text">Copy</span>
+      </button>
     </div>
+    
+    <!-- 代码块：确保在容器内居中 -->
+    <pre id="bibtex-code" class="p-4 bg-gray-50 rounded-lg border border-gray-200 overflow-x-auto text-sm" style="margin: 0 auto; max-width: 100%;">
+<code>@article{an2025unictokens,
+  title={UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens},
+  author={An, Ruichuan and Yang, Sihan and Zhang, Renrui and Shen, Zijun and Lu, Ming and Dai, Gaole and Liang, Hao and Guo, Ziyu and Yan, Shilin and Luo, Yulin and others},
+  journal={arXiv preprint arXiv:2505.14671},
+  year={2025}
+}</code>
+    </pre>
+  </div>
 </section>
+
+<style>
+  /* 确保按钮样式不影响居中 */
+  .copy-bibtex-btn {
+    white-space: nowrap; /* 避免按钮文本换行 */
+  }
+  
+  /* 清理pre标签内的多余缩进（关键！） */
+  #bibtex-code {
+    padding-left: 1rem; /* 统一左侧内边距，避免视觉偏移 */
+  }
+  
+  #bibtex-code code {
+    display: block;
+    line-height: 1.6; /* 优化代码行高，增强可读性 */
+  }
+</style>
+
+<script>
+  // 保留复制功能（如果需要）
+  function copyBibTeX() {
+    const code = document.getElementById('bibtex-code').textContent.trim();
+    navigator.clipboard.writeText(code).then(() => {
+      const btn = document.querySelector('.copy-bibtex-btn .copy-text');
+      const original = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = original, 2000);
+    });
+  }
+</script>
 
 
 <!-- Contact Section -->
