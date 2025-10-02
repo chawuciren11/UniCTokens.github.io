@@ -207,16 +207,16 @@
 <!-- Introduction Section -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- 移除错误的columns容器，改用简单的块级结构 -->
-    <h2 class="title is-3 mb-6">Introduction</h2> <!-- 标题单独放置，添加底部间距 -->
-    <div class="content has-text-justified"> <!-- 内容块直接放在container下 -->
+    <!-- 标题添加 has-text-centered 实现居中，保留底部间距 -->
+    <h2 class="title is-3 mb-6 has-text-centered">Introduction</h2>
+    <div class="content has-text-justified">
       <p>
         UniCTokens is an innovative framework that effectively integrates personalized information into a unified vision language model (VLM) for understanding and generation tasks. Existing methods typically treat understanding and generation tasks separately, which limits the model's ability to generate images with complex prompts. For example, given the concept ⟨bo⟩, generating "&lang;bo&rang; wearing its hat" without additional descriptions of what the hat looks like. We call this personalized knowledge-driven generation.
       </p>
-      <p class="mt-4"> <!-- 段落间添加间距 -->
+      <p class="mt-4">
         UniCTokens addresses this limitation through a three-stage progressive training strategy:
       </p>
-      <ul class="mt-2 ml-6"> <!-- 列表添加左缩进和顶部间距 -->
+      <ul class="mt-2 ml-6">
         <li>Understanding warm-up.</li>
         <li>Bootstrapping generation from understanding.</li>
         <li>Deepening understanding from generation (Generation as Perception).</li>
