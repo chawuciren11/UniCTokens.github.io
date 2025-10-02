@@ -230,33 +230,35 @@
 </section>
 
 <!-- Key Features Section -->
-<section class="section hero is-light">
+<section class="section hero is-light py-10">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered mb-8">Key Features</h2>
-    <div class="content has-text-justified">
+    <!-- 移除 has-text-justified（取消两端对齐） -->
+    <div class="content">
       <div class="columns is-multiline gap-6">
         <div class="column is-half">
           <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <h3 class="title is-4 mb-4">🔄 Unified Concept Tokens</h3>
-            <p>Unifying personalized understanding and generation tasks in a single model.</p>
+            <!-- 文本左对齐，避免空格拉伸 -->
+            <p class="has-text-left">Unifying personalized understanding and generation tasks in a single model.</p>
           </div>
         </div>
         <div class="column is-half">
           <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <h3 class="title is-4 mb-4">🧠 Personalized Knowledge-Driven Generation</h3>
-            <p>Leveraging external personalized knowledge for complex image generation.</p>
+            <p class="has-text-left">Leveraging external personalized knowledge for complex image generation.</p>
           </div>
         </div>
         <div class="column is-half">
           <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <h3 class="title is-4 mb-4">📈 Mutual Enhancement</h3>
-            <p>Three-stage strategy promoting mutual enhancement of understanding and generation, achieving cross-task information transfer.</p>
+            <p class="has-text-left">Three-stage strategy promoting mutual enhancement of understanding and generation, achieving cross-task information transfer.</p>
           </div>
         </div>
         <div class="column is-half">
           <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <h3 class="title is-4 mb-4">📊 UnifyBench</h3>
-            <p>The first benchmark for assessing personalized understanding, generation, and personalized knowledge-driven generation all in one.</p>
+            <p class="has-text-left">The first benchmark for assessing personalized understanding, generation, and personalized knowledge-driven generation all in one.</p>
           </div>
         </div>
       </div>
@@ -270,10 +272,15 @@
     display: flex;
     flex-direction: column;
     min-height: 180px;
+    padding: 1.5rem; /* 增加内边距，让文本更舒展 */
   }
   
   .feature-box p {
     flex-grow: 1;
+    line-height: 1.6; /* 优化行高，提升可读性 */
+    /* 禁止浏览器自动调整单词间距 */
+    word-spacing: normal;
+    letter-spacing: 0.02em; /* 微调字母间距，增强一致性 */
   }
 </style>
 
