@@ -284,13 +284,19 @@
 </style>
 
 <!-- UnifyBench Benchmark Tasks Section -->
+<!-- UnifyBench Benchmark Tasks Section -->
 <section class="section">
-  <div class="container is-max-desktop has-text-centered mb-8">
-    <h2 class="title is-3">📅 UnifyBench Benchmark Tasks</h2>
+  <div class="container is-max-desktop mb-8">
+    <!-- 主标题居中 -->
+    <h2 class="title is-3 has-text-centered mb-8">
+      <span class="icon mr-2"><i class="fas fa-calendar-check"></i></span>
+      UnifyBench Benchmark Tasks
+    </h2>
     
-    <h3 class="title is-4">Multi-Modal Understanding (MMU)</h3>
-    <div class="table-container">
-      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <!-- MMU 子标题居中 -->
+    <h3 class="title is-4 has-text-centered mb-4">Multi-Modal Understanding (MMU)</h3>
+    <div class="table-container" style="width: 100%;">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth custom-table">
         <thead>
           <tr>
             <th>Sub-task</th>
@@ -318,9 +324,10 @@
       </table>
     </div>
 
-    <h3 class="title is-4 mt-6">Text-to-Image Generation (T2I)</h3>
-    <div class="table-container">
-      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <!-- T2I 子标题居中 -->
+    <h3 class="title is-4 has-text-centered mt-8 mb-4">Text-to-Image Generation (T2I)</h3>
+    <div class="table-container" style="width: 100%;">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth custom-table">
         <thead>
           <tr>
             <th>Mode</th>
@@ -344,6 +351,27 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* 加强选择器优先级，确保样式生效 */
+  section .custom-table {
+    width: 100%; /* 表格填满容器 */
+    margin: 0 auto; /* 表格自身居中 */
+  }
+  
+  section .custom-table th,
+  section .custom-table td {
+    text-align: center !important; /* 强制水平居中（解决可能的样式冲突） */
+    vertical-align: middle !important; /* 强制垂直居中 */
+    padding: 1rem; /* 增加内边距，让换行内容更舒展 */
+    white-space: normal; /* 允许内容正常换行 */
+  }
+  
+  /* 优化长文本换行后的居中视觉效果 */
+  section .custom-table td {
+    word-break: normal; /* 避免单词被截断 */
+  }
+</style>
 
 <!-- Dataset Section -->
 <section class="section hero is-light py-10">
