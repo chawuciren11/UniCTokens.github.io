@@ -207,6 +207,7 @@
 <!-- Introduction Section -->
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
     <h2 class="title is-3">Introduction</h2>
     <div class="content has-text-justified">
       <p>
@@ -225,43 +226,56 @@
       </p>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- Key Features Section -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Key Features</h2>
+    <h2 class="title is-3 has-text-centered mb-8">Key Features</h2>
     <div class="content has-text-justified">
-      <!-- 使用 flex 容器确保等高 -->
-      <div class="columns is-multiline" style="display: flex; flex-wrap: wrap;">
+      <div class="columns is-multiline gap-6">
         <div class="column is-half">
-          <div class="box" style="height: 100%; display: flex; flex-direction: column;">
-            <h3 class="title is-4">🔄 Unified Concept Tokens</h3>
-            <p style="flex-grow: 1;">Unifying personalized understanding and generation tasks in a single model.</p>
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">🔄 Unified Concept Tokens</h3>
+            <p>Unifying personalized understanding and generation tasks in a single model.</p>
           </div>
         </div>
         <div class="column is-half">
-          <div class="box" style="height: 100%; display: flex; flex-direction: column;">
-            <h3 class="title is-4">🧠 Personalized Knowledge-Driven Generation</h3>
-            <p style="flex-grow: 1;">Leveraging external personalized knowledge for complex image generation.</p>
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">🧠 Personalized Knowledge-Driven Generation</h3>
+            <p>Leveraging external personalized knowledge for complex image generation.</p>
           </div>
         </div>
         <div class="column is-half">
-          <div class="box" style="height: 100%; display: flex; flex-direction: column;">
-            <h3 class="title is-4">📈 Mutual Enhancement</h3>
-            <p style="flex-grow: 1;">Three-stage strategy promoting mutual enhancement of understanding and generation, achieving cross-task information transfer.</p>
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">📈 Mutual Enhancement</h3>
+            <p>Three-stage strategy promoting mutual enhancement of understanding and generation, achieving cross-task information transfer.</p>
           </div>
         </div>
         <div class="column is-half">
-          <div class="box" style="height: 100%; display: flex; flex-direction: column;">
-            <h3 class="title is-4">📊 UnifyBench</h3>
-            <p style="flex-grow: 1;">The first benchmark for assessing personalized understanding, generation, and personalized knowledge-driven generation all in one.</p>
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">📊 UnifyBench</h3>
+            <p>The first benchmark for assessing personalized understanding, generation, and personalized knowledge-driven generation all in one.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .feature-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+  }
+  
+  .feature-box p {
+    flex-grow: 1;
+  }
+</style>
 
 <!-- UnifyBench Benchmark Tasks Section -->
 <section class="section">
