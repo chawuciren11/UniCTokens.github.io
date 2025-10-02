@@ -201,24 +201,24 @@ body {
 }
 
 .author-block {
-  display: inline-flex; /* È·±£ÄÚ²¿ÔªËØ¶ÔÆë¸üÁé»î */
-  align-items: center; /* ´¹Ö±¾ÓÖĞ×÷ÕßÃûºÍÉÏ±ê */
-  margin-right: 1rem; /* Ôö¼Ó×÷Õß¼äË®Æ½¼ä¾à£¬±ÜÃâÓµ¼· */
-  margin-bottom: 0.5rem; /* ÔÊĞí»»ĞĞÊ±±£Áô´¹Ö±¼ä¾à */
+  display: inline-flex; /* ç¡®ä¿å†…éƒ¨å…ƒç´ å¯¹é½æ›´çµæ´» */
+  align-items: center; /* å‚ç›´å±…ä¸­ä½œè€…åå’Œä¸Šæ ‡ */
+  margin-right: 1rem; /* å¢åŠ ä½œè€…é—´æ°´å¹³é—´è·ï¼Œé¿å…æ‹¥æŒ¤ */
+  margin-bottom: 0.5rem; /* å…è®¸æ¢è¡Œæ—¶ä¿ç•™å‚ç›´é—´è· */
 }
 
-/* ²¹³ä×÷ÕßÃûºóµÄ¶ººÅÑùÊ½£¨±ÜÃâÊÖ¶¯Ìí¼Ó¶ººÅµÄÅÅ°æÎÊÌâ£© */
+/* è¡¥å……ä½œè€…ååçš„é€—å·æ ·å¼ï¼ˆé¿å…æ‰‹åŠ¨æ·»åŠ é€—å·çš„æ’ç‰ˆé—®é¢˜ï¼‰ */
 .author-block:not(:last-child)::after {
   content: ",";
-  margin-left: 0.3rem; /* ¶ººÅÓë×÷ÕßÃû±£³ÖÊÊµ±¾àÀë */
-  color: var(--text-primary); /* ÓëÎÄ×ÖÍ¬É« */
+  margin-left: 0.3rem; /* é€—å·ä¸ä½œè€…åä¿æŒé€‚å½“è·ç¦» */
+  color: var(--text-primary); /* ä¸æ–‡å­—åŒè‰² */
 }
 
-/* µ÷ÕûÉÏ±ê£¨*6¥96¦0£©µÄÎ»ÖÃºÍ´óĞ¡£¬±ÜÃâÓ°ÏìÕûÌåÅÅ°æ */
+/* è°ƒæ•´ä¸Šæ ‡ï¼ˆ*â€ â€¡ï¼‰çš„ä½ç½®å’Œå¤§å°ï¼Œé¿å…å½±å“æ•´ä½“æ’ç‰ˆ */
 .author-block sup {
-  margin-left: 0.2rem; /* ÉÏ±êÓëÃû×ÖÀ­¿ª¾àÀë */
-  font-size: 0.75rem; /* ËõĞ¡ÉÏ±ê×ÖÌå */
-  line-height: 1; /* ±ÜÃâÉÏ±êÓ°ÏìĞĞ¸ß */
+  margin-left: 0.2rem; /* ä¸Šæ ‡ä¸åå­—æ‹‰å¼€è·ç¦» */
+  font-size: 0.75rem; /* ç¼©å°ä¸Šæ ‡å­—ä½“ */
+  line-height: 1; /* é¿å…ä¸Šæ ‡å½±å“è¡Œé«˜ */
 }
 
 .publication-banner img {
@@ -467,7 +467,11 @@ code {
   opacity: 1;
   visibility: visible;
 }
-
+.pdf-as-image {
+  border-radius: 4px; /* å¯é€‰ï¼šæ·»åŠ åœ†è§’ï¼Œæ¨¡æ‹Ÿå›¾ç‰‡è¾¹æ¡† */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* å¯é€‰ï¼šæ·»åŠ é˜´å½±å¢å¼ºç«‹ä½“æ„Ÿ */
+  object-fit: cover; /* ç¡®ä¿PDFå†…å®¹å¡«å……å®¹å™¨ï¼ˆå¯èƒ½ä¼šè£å‰ªè¾¹ç¼˜ï¼‰ */
+}
 
 /* More Works Dropdown */
 .more-works-container {
