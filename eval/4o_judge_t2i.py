@@ -1,4 +1,4 @@
-from api import MultiModalChatSession
+from eval.api import MultiModalChatSession
 import json
 import requests
 import base64
