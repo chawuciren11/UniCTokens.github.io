@@ -117,7 +117,7 @@ UniCTokens/
 ### 🚀 Quick Start For Dataset
 
 1. **Set the dataset root**
-   Open `gen_showo_training_data.py` and `gen_test_data.py`, change
+   Open `gen_showo_training_data.py` and `gen_test_data.py` in the dataset root, change
 
    ```python
    DATA_ROOT = "/path/to/UniCTokens_Dataset"
@@ -149,16 +149,16 @@ Our training is conducted per concept, and we provide a Three-Stage Training Fra
 concept="bo"  
 
 # Stage 1: Understanding warm-up
-python train_p_stage_1.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s1 --need_new_tokens --mmu_data --init_by_images --need_init  
+python train_w_3_stages/train_p_stage_1.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s1 --need_new_tokens --mmu_data --init_by_images --need_init  
 
 # Stage 2: Bootstrapping generation from understanding
-python train_p_stage_2.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s2 --pre_trained_ckpt_name test_train_s1 --t2i_data --mmu_data  
+python train_w_3_stages/train_p_stage_2.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s2 --pre_trained_ckpt_name test_train_s1 --t2i_data --mmu_data  
 
 # Transition from Stage 2 to Stage 3
-python stage_2_to_3_v1.py --concept "${concept}" --ckpt_name test_train_s2  
+python train_w_3_stages/stage_2_to_3_v1.py --concept "${concept}" --ckpt_name test_train_s2  
 
 # Stage 3: Deepening understanding from generation
-python train_p_stage_3.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s3 --pre_trained_ckpt_name test_train_s2 --t2i_data --mmu_data  
+python train_w_3_stages/train_p_stage_3.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s3 --pre_trained_ckpt_name test_train_s2 --t2i_data --mmu_data  
 ```
 
 ## 📊 Evaluation
@@ -167,7 +167,7 @@ Our evaluation procedure follows the same concept-based setup as training, where
 
 1. **Personalized Understanding** Evaluation Script
 
-First, set your DeepSeek API key in `eval_p_mmu.py`:
+First, set your DeepSeek API key in `eval/eval_p_mmu.py`:
 
 ```python
 CLIENT = init_deepseek("your api key")
@@ -176,7 +176,7 @@ CLIENT = init_deepseek("your api key")
 Then run the evaluation:
 
 ```shell
-python eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20
+python eval/eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20
 ```
 
 2. **Personalized Generation - Pure Generation** Evaluation Script
@@ -185,21 +185,21 @@ python eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept <concept_
 For Pure Generation, we use the test prompts from the DreamBooth dataset to compute CLIP-I and CLIP-T scores. First, generate the images to be evaluated:
 
 ```shell
-python gen_p_images_for_gen_eval.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
+python eval/gen_p_images_for_gen_eval.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
 ```
 
-After generating the images, modify the parameters as needed in `clip_eval.py` and run `clip_eval.py` to complete the evaluation.
+After generating the images, modify the parameters as needed in `eval/clip_eval.py` and run `eval/clip_eval.py` to complete the evaluation.
 
 3. **Personalized Generation — People Generation & Knowledge-driven Generation** Evaluation Scripts
 
 For People Generation and Knowledge-driven Generation, first generate the images to be evaluated:
 
 ```shell
-python gen_p_images_for_mmu_t2i.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
+python eval/gen_p_images_for_mmu_t2i.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
 ```
 
-- **People Generation**: Modify the parameters in `face_eval_v2.py`, then run `face_eval_v2.py` to evaluate face generation.
-- **Knowledge-driven Generation**: First set your GPT API key in `api.py`, then modify the parameters in `4o_judge_t2i.py` and run it to complete the evaluation.
+- **People Generation**: Modify the parameters in `eval/face_eval_v2.py`, then run `eval/face_eval_v2.py` to evaluate face generation.
+- **Knowledge-driven Generation**: First set your GPT API key in `eval/api.py`, then modify the parameters in `eval/4o_judge_t2i.py` and run it to complete the evaluation.
 
 ## 📜 License
 
