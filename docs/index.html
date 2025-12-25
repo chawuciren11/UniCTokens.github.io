@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens - Ruichuan An, Sihan Yang, Renrui Zhang, Zijun Shen, Ming Lu, Gaole Dai, Hao Liang, Ziyu Guo, Shilin Yan, Yulin Luo, Bocheng Zou, Chaoqun Yang, Wentao Zhang">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content='We present UniCTokens, a novel framework that unifies personalized concept understanding and generation through unified concept tokens within a vision-language model. To overcome limitations in knowledge-driven generation where existing methods struggle with complex prompts like "wearing its hat" without additional descriptions, we introduce a progressive training strategy with three stages: understanding warm-up, generation bootstrapping from understanding, and understanding enhancement from generation. Evaluated on UnifyBench—the first comprehensive benchmark for personalized tasks—our approach achieves competitive performance in concept understanding and generation while setting new state-of-the-art results in knowledge-driven generation, demonstrating that understanding and generation can mutually enhance each other in personalized models.'>
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="UniCTokens, Unified Vision-Language Model (VLM), Progressive Training Strategy, Unified Concept Tokens, UnifyBench, Personalized Understanding, Personalized Generation, Personalized Knowledge-Driven Generation, Soft Prompt Tuning, Cross-Task Information Transfer">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Ruichuan An, Sihan Yang, Renrui Zhang, Zijun Shen, Ming Lu, Gaole Dai, Hao Liang, Ziyu Guo, Shilin Yan, Yulin Luo, Bocheng Zou, Chaoqun Yang, Wentao Zhang">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens - Ruichuan An, Sihan Yang, Renrui Zhang, Zijun Shen, Ming Lu, Gaole Dai, Hao Liang, Ziyu Guo, Shilin Yan, Yulin Luo, Bocheng Zou, Chaoqun Yang, Wentao Zhang | Peking University, Xi'an JiaoTong University, CUHK, Intel Labs, Nanjing University, University of Wisconsin-Madison, Tsinghua University</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- 标题前添加PDF图标 -->
+            <h1 class="title is-1 publication-title">✨ UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens ✨</h1>
+            <!-- 修正后的作者列表结构 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc" target="_blank">Ruichuan An</a><sup>*</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/Hhankyangg" target="_blank">Sihan Yang</a><sup>*</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Renrui Zhang</a><sup>†</sup>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/chawuciren11" target="_blank">Zijun Shen</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Ming Lu</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Gaole Dai</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Hao Liang</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Ziyu Guo</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Shilin Yan</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Yulin Luo</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Bocheng Zou</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Chaoqun Yang</a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/arctanxarc/UniCTokens" target="_blank">Wentao Zhang</a><sup>‡</sup>
+              </span>
+            </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- 替换为机构和会议/期刊信息 -->
+                    <span class="author-block">Peking University, Xi'an JiaoTong University, CUHK, Intel Labs, Nanjing University, University of Wisconsin-Madison, Tsinghua University</span>
+                    <!-- 保留并扩展贡献说明 -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution &nbsp;&nbsp;&nbsp; <sup>†</sup>Project Leader &nbsp;&nbsp;&nbsp; <sup>‡</sup>Corresponding Author</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <!-- 更新arXiv论文链接 -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2505.14671" target="_blank"
+                           class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fas fa-file-pdf"></i>
+                          </span>
+                          <span>Paper</span>
+                        </a>
+                      </span>
+
+                    <!-- TODO: Add your supplementary material PDF or remove this section -->
+                    <span class="link-block">
+                      <a href="static/pdfs/2505.14671v2.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                <!-- 替换为GitHub仓库链接 -->
+                <span class="link-block">
+                  <a href="https://github.com/arctanxarc/UniCTokens" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                  <!-- 更新arXiv论文链接 -->
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2505.14671" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                    </a>
+                  </span>
+                </a>
+              </span>
+            </div>
+          </div>
+          <div class="item">
+            <!-- TODO: Replace with your research result images -->
+            <img src="static/images/icon.jpg" alt="The icon of UniCTokens" loading="lazy"/>
+            <!-- TODO: Replace with description of this result -->
+            <!-- <h2 class="subtitle has-text-centered">
+              The capability overview of UniCTokens. -->
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">📍 Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            Personalized models have demonstrated remarkable success in understanding and generating concepts provided by users. However, existing methods use separate concept tokens for understanding and generation, treating these tasks in isolation. This may result in limitations for generating images with complex prompts. For example, given the concept \langle bo\rangle, generating "\langle bo\rangle wearing its hat" without additional textual descriptions of its hat. We call this kind of generation personalized knowledge-driven generation. To address the limitation, we present UniCTokens, a novel framework that effectively integrates personalized information into a unified vision language model (VLM) for understanding and generation. UniCTokens trains a set of unified concept tokens to leverage complementary semantics, boosting two personalized tasks. Moreover, we propose a progressive training strategy with three stages: understanding warm-up, bootstrapping generation from understanding, and deepening understanding from generation to enhance mutual benefits between both tasks. To quantitatively evaluate the unified VLM personalization, we present UnifyBench, the first benchmark for assessing concept understanding, concept generation, and knowledge-driven generation. Experimental results on UnifyBench indicate that UniCTokens shows competitive performance compared to leading methods in concept understanding, concept generation, and achieving state-of-the-art results in personalized knowledge-driven generation. Our research demonstrates that enhanced understanding improves generation, and the generation process can yield valuable insights into understanding.
+          </p>
+        </div>
+        <div class="item">
+          <!-- TODO: Replace with your research result images -->
+          <img src="static/images/showcase.jpg" alt="The capability overview of UniCTokens" loading="lazy"/>
+          <!-- TODO: Replace with description of this result -->
+          <h2 class="subtitle has-text-centered">
+            The capability overview of UniCTokens.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+<!-- Introduction Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- 标题添加 has-text-centered 实现居中，保留底部间距 -->
+    <h2 class="title is-3 mb-6 has-text-centered">📰 Introduction</h2>
+    <div class="content has-text-justified">
+      <p>
+        UniCTokens is an innovative framework that effectively integrates personalized information into a unified vision language model (VLM) for understanding and generation tasks. Existing methods typically treat understanding and generation tasks separately, which limits the model's ability to generate images with complex prompts. For example, given the concept ⟨bo⟩, generating "&lang;bo&rang; wearing its hat" without additional descriptions of what the hat looks like. We call this personalized knowledge-driven generation.
+      </p>
+      <p class="mt-4">
+        UniCTokens addresses this limitation through a three-stage progressive training strategy:
+      </p>
+      <ul class="mt-2 ml-6">
+        <li>Understanding warm-up.</li>
+        <li>Bootstrapping generation from understanding.</li>
+        <li>Deepening understanding from generation (Generation as Perception).</li>
+      </ul>
+      <p class="mt-4">
+        Our research demonstrates that enhanced understanding improves generation, and the generation process can yield valuable insights into understanding.
+      </p>
+      
+    </div>
+    <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/main.jpg" alt="The overview of UniCTokens" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        The overview of UniCTokens.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Key Features Section -->
+<section class="section hero is-light py-10">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered mb-8">🔥 Key Features</h2>
+    <!-- 移除 has-text-justified（取消两端对齐） -->
+    <div class="content">
+      <div class="columns is-multiline gap-6">
+        <div class="column is-half">
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">🔄 Unified Concept Tokens</h3>
+            <!-- 文本左对齐，避免空格拉伸 -->
+            <p class="has-text-left">Unifying personalized understanding and generation tasks in a single model.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">🧠 Personalized Knowledge-Driven Generation</h3>
+            <p class="has-text-left">Leveraging external personalized knowledge for complex image generation.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">📈 Mutual Enhancement</h3>
+            <p class="has-text-left">Three-stage strategy promoting mutual enhancement of understanding and generation, achieving cross-task information transfer.</p>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box feature-box transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="title is-4 mb-4">📊 UnifyBench</h3>
+            <p class="has-text-left">The first benchmark for assessing personalized understanding, generation, and personalized knowledge-driven generation all in one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    padding: 1.5rem; /* 增加内边距，让文本更舒展 */
+  }
+  
+  .feature-box p {
+    flex-grow: 1;
+    line-height: 1.6; /* 优化行高，提升可读性 */
+    /* 禁止浏览器自动调整单词间距 */
+    word-spacing: normal;
+    letter-spacing: 0.02em; /* 微调字母间距，增强一致性 */
+  }
+</style>
+
+<!-- UnifyBench Benchmark Tasks Section -->
+<!-- UnifyBench Benchmark Tasks Section -->
+<section class="section">
+  <div class="container is-max-desktop mb-8">
+    <!-- 主标题居中 -->
+    <h2 class="title is-3 has-text-centered mb-8">
+      <span class="icon mr-2"><i class="fas fa-calendar-check"></i></span>
+      UnifyBench Benchmark Tasks
+    </h2>
+    
+    <!-- MMU 子标题居中 -->
+    <h3 class="title is-4 has-text-centered mb-4">Multi-Modal Understanding (MMU)</h3>
+    <div class="table-container" style="width: 100%;">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth custom-table">
+        <thead>
+          <tr>
+            <th>Sub-task</th>
+            <th>Source files</th>
+            <th>Evaluation focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Text-Only QA</td>
+            <td>test/&lt;concept&gt;/text_only.json</td>
+            <td>Check whether the model remembers concept knowledge (no image)</td>
+          </tr>
+          <tr>
+            <td>VQA</td>
+            <td>test/&lt;concept&gt;/vqa.json + image</td>
+            <td>Visual question answering about the concept image</td>
+          </tr>
+          <tr>
+            <td>Rec</td>
+            <td>test/*.png</td>
+            <td>Pure visual recognition capability</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- T2I 子标题居中 -->
+    <h3 class="title is-4 has-text-centered mt-8 mb-4">Text-to-Image Generation (T2I)</h3>
+    <div class="table-container" style="width: 100%;">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth custom-table">
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>Input</th>
+            <th>Metrics</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vanilla generation</td>
+            <td>Prompts from the DreamBooth Dataset → target-concept images</td>
+            <td>CLIP-I / CLIP-T · ArcFace similarity</td>
+          </tr>
+          <tr>
+            <td>Personalized knowledge-driven</td>
+            <td>t2i_conditions.json</td>
+            <td>Combined T2I-Score: must satisfy both visual & textual attributes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="container">
+    <div id="results-carousel" class="carousel results-carousel">
+
+    <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/show.jpg" alt="Qualitative Comparisons among UniCTokens, Yo'Chameleon and GPT-4o" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        Qualitative Comparisons among UniCTokens, Yo'Chameleon and GPT-4o.
+     </h2>
+   </div>
+   <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/app_show.jpg" alt="More qualitative results generated from our model" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        More qualitative results generated from our model.
+   </h2>
+ </div>
+</div>
+</div>
+</section>
+
+<style>
+  /* 加强选择器优先级，确保样式生效 */
+  section .custom-table {
+    width: 100%; /* 表格填满容器 */
+    margin: 0 auto; /* 表格自身居中 */
+  }
+  
+  section .custom-table th,
+  section .custom-table td {
+    text-align: center !important; /* 强制水平居中（解决可能的样式冲突） */
+    vertical-align: middle !important; /* 强制垂直居中 */
+    padding: 1rem; /* 增加内边距，让换行内容更舒展 */
+    white-space: normal; /* 允许内容正常换行 */
+  }
+  
+  /* 优化长文本换行后的居中视觉效果 */
+  section .custom-table td {
+    word-break: normal; /* 避免单词被截断 */
+  }
+</style>
+
+<!-- Dataset Section -->
+<section class="section hero is-light py-10">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 mb-6 has-text-centered">📦 UniCTokens Dataset</h2>
+    
+    <!-- Download Link -->
+    <div class="has-text-centered mb-8">
+      <a href="https://drive.google.com/file/d/1bRv_E855P2ds6_1YeyQtJ7kfUxntPoGa/view?usp=sharing" class="external-link button is-normal is-rounded is-dark" target="_blank">
+        <span class="icon">
+          <i class="fas fa-download"></i>
+        </span>
+        <span>Download the dataset here</span>
+      </a>
+    </div>
+    
+    <!-- Data Overview -->
+    <h3 class="title is-4 mb-4">Data Overview</h3>
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total concepts</td>
+            <td>20 (Human × 10 · Animal × 5 · Object × 5)</td>
+          </tr>
+          <tr>
+            <td>Images per concept</td>
+            <td>N ≈ 10 – 15 (already split into train / test)</td>
+          </tr>
+          <tr>
+            <td>Negative samples</td>
+            <td>random_images/ (100 random irrelevant images) + negative_example/ (hard negatives)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/dataset.jpg" alt="UnifyBench Dataset" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        UnifyBench Dataset.
+     </h2>
+   </div>
+  </div>
+</section>
+
+<!-- Citation Section -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 mb-6 has-text-centered">📝 BibTeX</h2>
+      <div class="bibtex-header">
+        
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code" class="p-4 bg-gray-50 rounded-lg border border-gray-200 overflow-x-auto text-sm">
+        <code>@article{an2025unictokens,
+          title={UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens},
+          author={An, Ruichuan and Yang, Sihan and Zhang, Renrui and Shen, Zijun and Lu, Ming and Dai, Gaole and Liang, Hao and Guo, Ziyu and Yan, Shilin and Luo, Yulin and others},
+          journal={arXiv preprint arXiv:2505.14671},
+          year={2025}
+        }</code>
+        </pre>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="section hero is-light py-10">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 mb-6 has-text-centered">📬 Contact</h2>
+    <div class="content has-text-justified">
+      <ul class="list-disc ml-6">
+        <li class="mb-2">
+          GitHub Issues: <a href="https://github.com/arctanxarc/UniCTokens/issues" target="_blank" class="external-link">https://github.com/arctanxarc/UniCTokens/issues</a>
+        </li>
+        <li>
+          Email: <a href="mailto:arctanxarc@gmail.com" class="external-link">arctanxarc@gmail.com</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!--End BibTex citation -->
+
+
+
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
