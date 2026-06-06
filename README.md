@@ -1,4 +1,4 @@
-<!-- <div align="center">
+﻿<!-- <div align="center">
 <h1>
 ✨ UniCTokens: Boosting Personalized Understanding and Generation via Unified Concept Tokens ✨
 </h1>
@@ -36,6 +36,8 @@
 <p align="center">
     <img src="assests/fig1.png" width="95%"> <br>
 </p>
+
+> News! We release a standalone [sync_r1_paper_grpo/](./sync_r1_paper_grpo) folder that contains our paper-aligned Sync-R1 GRPO adaptation, including the cleaned training entrypoint, configs, dependency list, and trajectory-level MaskGIT GRPO implementation.
 
 ## 📰 Introduction
 
@@ -227,3 +229,4 @@ If you use UniCTokens in your research, please cite our paper:
 
 * Issues: [https://github.com/arctanxarc/UniCTokens/issues](https://github.com/arctanxarc/UniCTokens/issues)
 * Email: [arctanxarc@gmail.com](mailto:arctanxarc@gmail.com)
+
