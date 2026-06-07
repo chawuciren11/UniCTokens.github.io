@@ -31,7 +31,7 @@ from transformers import AutoTokenizer
 from llava.llava import conversation as conversation_lib
 import copy
 from omegaconf import DictConfig, ListConfig, OmegaConf
-from grpo_paper import unic_grpo
+from grpo import unic_grpo
 conversation_lib.default_conversation = conversation_lib.conv_templates["phi1.5"]
 if not dist.is_initialized():
     dist.init_process_group(backend='nccl', init_method='env://')

@@ -37,7 +37,7 @@
     <img src="assests/fig1.png" width="95%"> <br>
 </p>
 
-> News! We release a standalone [sync_r1_paper_grpo/](./sync_r1_paper_grpo) folder that contains our paper-aligned Sync-R1 GRPO adaptation, including the cleaned training entrypoint, configs, dependency list, and trajectory-level MaskGIT GRPO implementation.
+> 🔥**News!** Building upon our prior research, we are excited to release [Uni-Synergy](https://arxiv.org/abs/2605.10445)! We also provide the cleaned Sync-R1 GRPO adaptation under [sync_r1_grpo/](./sync_r1_grpo), together with setup instructions and the trajectory-level GRPO implementation. 🚀
 
 ## 📰 Introduction
 
@@ -229,4 +229,5 @@ If you use UniCTokens in your research, please cite our paper:
 
 * Issues: [https://github.com/arctanxarc/UniCTokens/issues](https://github.com/arctanxarc/UniCTokens/issues)
 * Email: [arctanxarc@gmail.com](mailto:arctanxarc@gmail.com)
+
 
